@@ -41,6 +41,11 @@ app.getWords = function(paraVal, searchVal){
 				lyrics.pop();
 				//filter through lyrics array here
 				for (var x = 0; x < lyrics.length; x++) {
+					var lyricLength = lyrics[x].length;
+					var lastChar = lyrics[x].charAt((lyricLength - 1))
+					// if (lastChar === '.' || lastChar === ',' || lastChar === '!' || lastChar === ' ' || lastChar === '?') {
+					// 	lyrics[x].substring(0, (lyricLength - 2));
+					// };
 					if (!(lyrics[x] === '' || lyrics[x] === '[Chorus]' || lyrics[x] === '(GUCCI MANE VERSE#1)' || lyrics[x] === '("...')) {
 						storeArray.push(lyrics[x]);
 					};
@@ -89,7 +94,7 @@ app.insertParagraph = function(arr){
 		// find length of charArray, put value into variable
 		// if last item is equal to ! ? . remove last item in charArray
 		// loop over charArray and put back into new string
-		var phrase = $('<span>').addClass('phrase').html(arr[num] + '.  ');
+		var phrase = $('<span>').addClass('phrase').html(arr[num] + ' ');
 		paraText.append(phrase);
 		para.append(paraText);
 	};
