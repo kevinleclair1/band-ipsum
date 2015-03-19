@@ -43,9 +43,6 @@ app.getWords = function(paraVal, searchVal){
 				for (var x = 0; x < lyrics.length; x++) {
 					var lyricLength = lyrics[x].length;
 					var lastChar = lyrics[x].charAt((lyricLength - 1))
-					// if (lastChar === '.' || lastChar === ',' || lastChar === '!' || lastChar === ' ' || lastChar === '?') {
-					// 	lyrics[x].substring(0, (lyricLength - 2));
-					// };
 					if (!(lyrics[x] === '' || lyrics[x] === '[Chorus]' || lyrics[x] === '(GUCCI MANE VERSE#1)' || lyrics[x] === '("...')) {
 						storeArray.push(lyrics[x]);
 					};
