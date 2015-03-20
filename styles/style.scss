@@ -16,12 +16,37 @@ body {
 	background:#333;
 }
 
-
-.searchBar {
-	
+h1, h2 {
+	text-align:center;
+	@include column(8);
+	@include push(2);
+	@include pull(2);
 }
 
 
+.searchArea {
+	
+	text-align:center;
+
+	p {
+		@include column(8);
+		@include push(2);
+		@include pull(2);
+	
+	}
+}
+
+input.search {
+	@include column(4);
+	@include push(4);
+	@include pull(4);
+}
+
+select {
+	@include column(2);
+	@include push(5);
+	@include pull(5);
+}
 
 input[type="submit"] {
 	@include column(2);
@@ -29,4 +54,11 @@ input[type="submit"] {
 	@include pull(5);
 	webkit-appearance:none;
 	appearance:none;
+}
+
+footer {
+	text-align:center;
+	@include column(8);
+	@include push(2);
+	@include pull(2);
 }
