@@ -1,5 +1,4 @@
 var app = {};
-$trapLogo = $('.trapLogo');
 
 app.url = 'http://api.lyricsnmusic.com/songs';
 app.key = function(){
@@ -32,7 +31,7 @@ app.getWords = function(paraVal, searchVal){
 		type : 'GET',
 		dataType: 'jsonp',
 		data: query,
-		success: function(data) { //function is a callback, will work when data is received 
+		success: function(data) { 
 			var storeArray = []
 			for (var i = 0; i < data.data.length; i++) {
 				//loop over each array item
@@ -44,7 +43,7 @@ app.getWords = function(paraVal, searchVal){
 					var lastChar = lyrics[x].length - 1;
 					var charCode = lyrics[x].charCodeAt(lastChar);
 					if (charCode < 65 || charCode > 122) {
-						lyrics[x] = lyrics[x].substr(0, (lastChar));
+						lyrics[x] = lyrics[x].substr(0, lastChar);
 					};
 					if (!(lyrics[x] === '' || lyrics[x].charAt(0) === '[')) {
 						storeArray.push(lyrics[x]);
@@ -84,10 +83,6 @@ app.insertParagraph = function(arr){
 		//loop through array and push 
 		var phraseArray = []; 
 		var num = Math.floor(Math.random()*arr.length);
-		// var charArray = arr[i].split('')
-		// find length of charArray, put value into variable
-		// if last item is equal to ! ? . remove last item in charArray
-		// loop over charArray and put back into new string
 		var lastChar = arr[num].length - 1
 		var charCode = arr[num].charCodeAt(lastChar);
 		if (charCode < 65 || charCode > 122) {
