@@ -40,10 +40,13 @@ app.getWords = function(paraVal, searchVal){
 				var lyrics = snippet.split('\r\n');
 				lyrics.pop();
 				//filter through lyrics array here
-				for (var x = 0; x < lyrics.length; x++) {
-					var lyricLength = lyrics[x].length;
-					var lastChar = lyrics[x].charAt((lyricLength - 1))
-					if (!(lyrics[x] === '' || lyrics[x] === '[Chorus]' || lyrics[x] === '(GUCCI MANE VERSE#1)' || lyrics[x] === '("...')) {
+				for (var x = 0; x < lyrics.length; x++) {	
+					var lastChar = lyrics[x].length - 1;
+					var charCode = lyrics[x].charCodeAt(lastChar);
+					if (charCode < 65 || charCode > 122) {
+						lyrics[x] = lyrics[x].substr(0, (lastChar));
+					};
+					if (!(lyrics[x] === '' || lyrics[x].charAt(0) === '[')) {
 						storeArray.push(lyrics[x]);
 					};
 				};
@@ -91,7 +94,7 @@ app.insertParagraph = function(arr){
 		// find length of charArray, put value into variable
 		// if last item is equal to ! ? . remove last item in charArray
 		// loop over charArray and put back into new string
-		var phrase = $('<span>').addClass('phrase').html(arr[num] + ' ');
+		var phrase = $('<span>').addClass('phrase').html(arr[num] + '.  ');
 		paraText.append(phrase);
 		para.append(paraText);
 	};
