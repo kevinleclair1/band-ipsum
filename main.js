@@ -50,18 +50,12 @@ app.getWords = function(paraVal, searchVal){
 						storeArray.push(lyrics[x]);
 					};
 				};
-				//make sure there are no repeats with if statement
-				// grab snippet
-				// push string to new function
 			};
 			if (storeArray.length === 0) {
 				app.searchError();
-				return
+				return;
 			}
 			var lyricsArray = app.removeDup(storeArray);
-			//choose random elements from lyricsArray to put into dom
-			//write function to push paragraph onto page
-			//for loop that takes drop down select value
 			console.log(lyricsArray);
 			for (var i = 0; i < paraVal; i++) {
 				app.insertParagraph(lyricsArray)
@@ -94,7 +88,14 @@ app.insertParagraph = function(arr){
 		// find length of charArray, put value into variable
 		// if last item is equal to ! ? . remove last item in charArray
 		// loop over charArray and put back into new string
-		var phrase = $('<span>').addClass('phrase').html(arr[num] + '.  ');
+		var lastChar = arr[num].length - 1
+		var charCode = arr[num].charCodeAt(lastChar);
+		if (charCode < 65 || charCode > 122) {
+			var phrase = $('<span>').addClass('phrase').html(arr[num] + '  ');
+		}
+		else {
+			var phrase = $('<span>').addClass('phrase').html(arr[num] + '.  ');
+		}
 		paraText.append(phrase);
 		para.append(paraText);
 	};
